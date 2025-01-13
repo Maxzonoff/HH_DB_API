@@ -1,10 +1,15 @@
 import psycopg2
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 from src.DB_Manager import DBManager
 from src.hh_api import HeadHunterAPI
 from src.vacancy import Vacancy
 
-conn_params = dict(host="localhost", database="HH", user="postgres", password="3105")
+conn_params = dict(host="localhost", database="HH", user="postgres", password="3105"
+        )
 
 
 def create_employers():

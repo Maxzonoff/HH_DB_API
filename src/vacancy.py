@@ -1,15 +1,12 @@
-import re
-
-
 class Vacancy:
     """Класс для работы с вакансиями"""
 
     def __init__(
-            self,
-            name: str,
-            url: str,
-            salary: int | None,
-            responsibility: str | None,
+        self,
+        name: str,
+        url: str,
+        salary: int | None,
+        responsibility: str | None,
     ) -> None:
         self.__name = name
         self.__url = url

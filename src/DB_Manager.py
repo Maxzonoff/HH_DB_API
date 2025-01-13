@@ -1,4 +1,9 @@
+import os
+
 import psycopg2
+from dotenv import load_dotenv
+
+load_dotenv()
 
 from src.vacancy import Vacancy
 
@@ -7,8 +12,7 @@ class DBManager:
     """Клас для взаимодействия с базой данных."""
 
     def __init__(self):
-        self.conn_params = dict(
-            host="localhost", database="HH", user="postgres", password="3105"
+        self.conn_params = dict(host="localhost", database="HH", user="postgres", password="3105"
         )
 
     def get_companies_and_vacancies_count(self):
@@ -76,11 +80,13 @@ class DBManager:
                     INSERT INTO public.vacancies(
                     name, url, salary, responsibility, employer_id)
                     VALUES (%s, %s, %s, %s, %s)""",
-                    (vacancy.name,
-                    vacancy.url,
-                    vacancy.salary,
-                    vacancy.responsibility,
-                    employer_id)
+                    (
+                        vacancy.name,
+                        vacancy.url,
+                        vacancy.salary,
+                        vacancy.responsibility,
+                        employer_id,
+                    ),
                 )
 
     def get_employers(self):
@@ -97,9 +103,3 @@ class DBManager:
                     """
                 )
                 return cur.fetchall()
-
-    # def __execute_query(self, name: str):
-    #     with psycopg2.connect(**self.conn_params) as conn:
-    #         with conn.cursor() as cur:
-    #             with open(name) as f:
-    #                 cur.execute(f.read())
