@@ -5,6 +5,7 @@ from src.head_hunter import HeadHunter
 def main():
     create_db()
     fill_vacancies()
+
     print("Введите номер действия:")
     print("1. Получить список всех компаний и количество вакансий у каждой компании.")
     print(
