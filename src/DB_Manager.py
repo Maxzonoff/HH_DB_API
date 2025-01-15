@@ -10,7 +10,6 @@ load_dotenv()
 
 class DBManager:
     """Клас для взаимодействия с базой данных."""
-
     def __init__(self):
         self.conn_params = dict(
             host=os.getenv("DATABASE_HOST"),
