@@ -1,15 +1,20 @@
-import psycopg2
-from dotenv import load_dotenv
 import os
 
-load_dotenv()
+import psycopg2
+from dotenv import load_dotenv
 
 from src.DB_Manager import DBManager
 from src.hh_api import HeadHunterAPI
 from src.vacancy import Vacancy
 
-conn_params = dict(host="localhost", database="HH", user="postgres", password="3105"
-        )
+load_dotenv()
+
+conn_params = dict(
+    host=os.getenv("DATABASE_HOST"),
+    database=os.getenv("DATABASE_NAME"),
+    user=os.getenv("DATABASE_USER"),
+    password=os.getenv("DATABASE_PASSWORD"),
+)
 
 
 def create_employers():
@@ -60,7 +65,13 @@ def fill_employers():
                 (1, 15478, 'VK'),
                 (2, 1740, 'яндекс'),
                 (3, 78638, 'т-банк'),
-                (4, 3529, 'сбер')"""
+                (4, 3529, 'сбер'),
+                (5, 2180, 'OZON'),
+                (6, 3776, 'МТС'),
+                (7, 3127, 'МЕГАФОН'),
+                (8, 4934, 'Билайн'),
+                (9, 3388, 'Газпромбанк'),
+                (10, 1455, 'HeadHunter')"""
             )
 
 

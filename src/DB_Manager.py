@@ -3,16 +3,19 @@ import os
 import psycopg2
 from dotenv import load_dotenv
 
-load_dotenv()
-
 from src.vacancy import Vacancy
+
+load_dotenv()
 
 
 class DBManager:
     """Клас для взаимодействия с базой данных."""
-
     def __init__(self):
-        self.conn_params = dict(host="localhost", database="HH", user="postgres", password="3105"
+        self.conn_params = dict(
+            host=os.getenv("DATABASE_HOST"),
+            database=os.getenv("DATABASE_NAME"),
+            user=os.getenv("DATABASE_USER"),
+            password=os.getenv("DATABASE_PASSWORD"),
         )
 
     def get_companies_and_vacancies_count(self):
